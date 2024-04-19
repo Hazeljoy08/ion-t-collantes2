@@ -21,7 +21,7 @@ const Profile: React.FC = () => {
         </IonHeader>
         
     <IonCard>
-      <img alt="Silhouette of mountains" src="../src/assets/img/COVERPIC.png" />
+      <img alt="Silhouette of mountains" src="../src/assets/img/COVERPIC2.png" />
 
       {/* <video controls>
         <source src="../src/assets/videos/INTRO_VIDEO.mp4" type="video/mp4" />

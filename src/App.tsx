@@ -42,27 +42,35 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
           <Route exact path="/home">
             <Home />
           </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
+
+          
           <Route exact path="/click_counter">
             <Click_counter />
           </Route>
-          <Route path="/calculator">
+          <Route exact path="/calculator">
             <Calculator />
           </Route>
+
+
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-        <IonTabButton tab="home" href="/home">
+          <IonTabButton tab="home" href="/home">
             <IonIcon aria-hidden="true" icon={home} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
+          
+          {/*
           <IonTabButton tab="profile" href="/profile">
             <IonIcon aria-hidden="true" icon={personCircleOutline} />
             <IonLabel>Profile</IonLabel>
@@ -75,6 +83,17 @@ const App: React.FC = () => (
             <IonIcon aria-hidden="true" icon={calculatorOutline} />
             <IonLabel>Calculator</IonLabel>
           </IonTabButton>
+        */}
+
+          <IonTabButton tab="" href="">
+            <IonIcon aria-hidden="true" />
+            <IonLabel></IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="profile" href="/profile">
+            <IonIcon aria-hidden="true" icon={personCircleOutline} />
+            <IonLabel>Profile</IonLabel>
+          </IonTabButton>
+
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
