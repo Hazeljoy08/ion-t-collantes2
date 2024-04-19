@@ -15,6 +15,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Click_counter from './pages/Click_counter';
 import Calculator from './pages/Calculator';
+import Todolist from './pages/Todolist';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -56,6 +57,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/calculator">
             <Calculator />
+          </Route>
+          <Route exact path="/todolist">
+            <Todolist />
           </Route>
 
 
