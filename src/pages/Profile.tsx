@@ -23,10 +23,6 @@ const Profile: React.FC = () => {
     <IonCard>
       <img alt="Silhouette of mountains" src="../src/assets/img/COVERPIC2.png" />
 
-      {/* <video controls>
-        <source src="../src/assets/videos/INTRO_VIDEO.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
 
       <IonRow>
         <IonCol size="4">
