@@ -22,70 +22,129 @@ import {
   IonTitle,
   IonToolbar,
   IonItemDivider,
-  IonSearchbar
+  IonSearchbar,
+  IonBadge
 } from '@ionic/react';
-import { pulseOutline, calculatorOutline } from 'ionicons/icons';
-import { useHistory } from 'react-router-dom';
-import { listOutline } from 'ionicons/icons';
 
+//Custom CSS
+import './Home.css';
+
+//Ionic Icons
+import { speedometerOutline,calculator,pencil, chatbubble, readerOutline, logoIonic,logoFirebase, logoReact} from 'ionicons/icons';
+
+const cardData = [
+  {
+    title: 'Click Counter',
+    icon: speedometerOutline,
+    subtitle: 'Applet #1',
+    link: '/clickcounter',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
+
+  },
+  {
+    title: 'Calculator',
+    icon: calculator,
+    subtitle: 'Applet #2',
+    link: '/calculator',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
+  },
+  {
+    title: 'To Do List',
+    icon: pencil,
+    subtitle: 'Applet #3',
+    link: '/todolist',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
+  },
+  {
+    title: 'Quote Generator',
+    icon: chatbubble,
+    subtitle: 'Applet #4',
+    link: '/quotegenerator',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact
+    }
+  },
+  {
+    title: 'Notes',
+    icon: readerOutline,
+    subtitle: 'Applet #5',
+    link: '/notes',
+    tags: {
+      tag1: logoIonic,
+      tag2: logoReact, 
+      tag3: logoFirebase 
+    }
+  }
+  
+];
 
 const Home: React.FC = () => {
-  const history = useHistory();
-
-  const goToClickCounter = () => {
-    history.push('/click_counter');
-  };
-
-  const goToCalculator = () => {
-    history.push('/calculator');
-  };
-
-  const goToTodolist = () => {
-    history.push('/todolist');
-  };
-
-  return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Home</IonTitle>
-        </IonToolbar>
-        <hr />
-      </IonHeader>
-      <IonContent fullscreen className="ion-padding">
-        <div className="ion-text-center"> {/* Centering content */}
-          <IonCard onClick={goToClickCounter} style={{ width: '350px', cursor: 'pointer' }} color="danger">
-            <IonCardContent style={{ fontSize: '30px' }}>
-              <IonIcon icon={pulseOutline} slot="start" />
-              Click Counter
-            </IonCardContent>
-          </IonCard>
+  {/*Dynamic Search*/}
+  const [searchTerm, setSearchTerm] = useState<string>('');
   
-  
-          <IonCard onClick={goToCalculator} style={{ width: '350px', cursor: 'pointer' }} color="danger">
-            <IonCardContent style={{ fontSize: '30px' }}>
-              <IonIcon icon={calculatorOutline} slot="start" />
-              Calculator
-            </IonCardContent>
-          </IonCard>
+    return (
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Home</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent fullscreen>
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Home</IonTitle>
+            </IonToolbar>
+          </IonHeader>
           
-          <IonCard onClick={goToTodolist} style={{ width: '350px', cursor: 'pointer' }} color="danger">
-            <IonCardContent style={{ fontSize: '30px' }}>
-              <IonIcon icon={listOutline} slot="start" />
-              Todo List
-            </IonCardContent>
-          </IonCard>
-  
-          <IonCard style={{ width: '350px' }} color="danger">
-            <IonCardContent style={{ fontSize: '30px' }}>
-              Blank
-            </IonCardContent>
-          </IonCard>
-        </div>
-      </IonContent>
-    </IonPage>
-  );
-  
+          {/*Dynamic Search*/}
+          <IonSearchbar 
+            value={searchTerm} 
+            onIonInput={(e) => setSearchTerm(e.target.value ?? '')} 
+          />
+          
+          {cardData
+            .filter((card) => card.title.toLowerCase().includes(searchTerm.toLowerCase()))
+            .map((card, index) => (
+              <IonCard key={index} href={card.link}>
+                <IonCardHeader>
+                  <IonCardTitle>
+                    <IonGrid>
+                      <IonRow>
+                        <IonCol size="2">
+                          <IonIcon className="home-card-icon" icon={card.icon} color="primary" />
+                        </IonCol>
+                        <IonCol size="auto">
+                            <div className="home-card-title">{card.title}</div>
+                            <IonCardSubtitle>{card.subtitle}</IonCardSubtitle>
+                            {card.tags && Object.entries(card.tags).map(([key, icon], i) => (
+                              <IonIcon
+                                key={i}
+                                className="home-card-subicon"
+                                icon={icon}
+                                color="primary" // Set color as needed
+                              />
+                            ))}
+                          </IonCol>
+                      </IonRow>
+                    </IonGrid>
+                  </IonCardTitle>
+                </IonCardHeader>
+              </IonCard>
+          ))}
+        </IonContent>
+      </IonPage>
+    );
 };
-
+  
 export default Home;
+  
