@@ -28,11 +28,11 @@ import {
 //Ionicons
 import { trashOutline, pencilOutline } from 'ionicons/icons';
 
-import './Notes.css';
+import './notes.css';
 
 // Firebase
 import { collection, addDoc, onSnapshot,updateDoc,doc, deleteDoc} from 'firebase/firestore';
-import { db } from './Firebase';
+import { db } from './firebase';
 
 const Notes: React.FC = () => {
   const [notes, readNotes] = useState<{ id: string; title: string; description: string;dateAdded: string; }[]>([]);
