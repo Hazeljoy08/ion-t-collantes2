@@ -46,19 +46,23 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           
-          <Route exact path="/clickcounter">
+          <Route exact path="/ion-t-collantes2/Home/Clickcounter">
             <ClickCounter />
           </Route>
-          <Route exact path="/calculator">
+
+          <Route exact path="/ion-t-collantes2/Home/Calculator">
             <Calculator />
           </Route>
-          <Route exact path="/todolist">
+
+          <Route exact path="/ion-t-collantes2/Home/Todolist">
             <Todolist />
           </Route>
-          <Route exact path="/quotesgenerator">
+
+          <Route exact path="/ion-t-collantes2/Home/QuotesGenerator">
             <QuotesGenerator />
           </Route>
-          <Route exact path="/notes">
+
+          <Route exact path="/ion-t-collantes2/Home/notes">
             <Notes />
           </Route>
 
@@ -66,19 +70,21 @@ const App: React.FC = () => (
           <Route exact path="/ion-t-collantes2/">
             <Redirect to="/ion-t-collantes2/home" />
           </Route>
-          <Route exact path="/ion-t-collantes2/home">
+
+          <Route exact path="/ion-t-collantes2/Home">
             <Home />
           </Route>
-          <Route exact path="/ion-t-collantes2/profile">
+          
+          <Route exact path="/ion-t-collantes2/Profile">
             <Profile />
           </Route>
 
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
 
-          <IonTabButton tab="home" href="/ion-t-collantes2/home">
+          <IonTabButton tab="home" href="/ion-t-collantes2/Home">
             <IonIcon aria-hidden="true" icon={home} />
-            <IonLabel>Home</IonLabel>
+            <IonLabel>profile</IonLabel>
           </IonTabButton>
           
           {/*
